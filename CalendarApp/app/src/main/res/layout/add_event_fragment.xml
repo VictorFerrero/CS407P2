@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1">
+
+    <DatePicker
+        android:layout_width="wrap_content"
+        android:layout_height="99dp"
+        android:id="@+id/addEventDate"
+        android:layout_gravity="center_horizontal" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Event Name"
+        android:id="@+id/textView"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="0.06" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/eventName"
+        android:layout_gravity="center_horizontal"
+        android:phoneNumber="false"
+        android:text="Enter the name of your event here" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Event Description"
+        android:id="@+id/textView2"
+        android:layout_gravity="center_horizontal" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/eventDescription"
+        android:layout_gravity="center_horizontal"
+        android:text="Enter your event description here" />
+</LinearLayout>
