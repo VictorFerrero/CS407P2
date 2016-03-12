@@ -15,15 +15,29 @@ public class Event {
     private String eventName;
     private String eventDescription;
     private int id;
+    private String test;
 
     public Event(String time, String en, String eD) throws ParseException{
-        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+        this.test = time;
+        SimpleDateFormat format = new SimpleDateFormat("MM/dd/yyyy");
         this.time = format.parse(time);
         this.eventName = en;
         this.eventDescription = eD;
         // use ids for deletion
         this.id = Event.counter;
         Event.counter = Event.counter + 1;
+    }
+
+    // this constructor is for loading saved events. We use a saved id and
+    // we do NOT increment the event id counter
+    public Event(String time, String en, String eD, String strId) throws ParseException{
+        this.test = time;
+        SimpleDateFormat format = new SimpleDateFormat("MM/dd/yyyy");
+        this.time = format.parse(time);
+        this.eventName = en;
+        this.eventDescription = eD;
+        // use ids for deletion
+        this.id = Integer.parseInt(strId);
     }
 
     public int getId() {
@@ -56,9 +70,14 @@ public class Event {
     }
 
     public String toString() {
-        String s1 = "NOT IMPLEMENTED";
-
-
+        String s1 = "";
+        String newline = System.getProperty("line.separator");
+        SimpleDateFormat dateFormatter = new SimpleDateFormat("MM/dd/yyyy");
+        String strDate = dateFormatter.format(this.time);
+        s1 = "Date: " + strDate + newline;
+        s1 += "Event Name: " + this.eventName + newline;
+        s1 += "Event Description: " + this.eventDescription + newline;
+        s1 += "Event Id: " + this.id + newline + newline;
         return s1;
     }
 }
