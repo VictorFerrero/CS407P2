@@ -19,7 +19,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.text.ParseException;
 import java.util.Calendar;
-
+//  Toast.makeText(getBaseContext(), "strCalendar", Toast.LENGTH_LONG).show();
 public class MainActivity extends AppCompatActivity
         implements AddEventFragment.AddEventCallback, ViewDeleteFragment.ViewDeleteCallback {
 
@@ -44,9 +44,9 @@ public class MainActivity extends AppCompatActivity
         trans.remove((Fragment) fragment);
         trans.commit();
 
-     //   Toast.makeText(getBaseContext(), "", Toast.LENGTH_LONG).show();
         this.showAllButtons();
         this.mostCurrentFragment = null;
+
     }
 
     @Override
@@ -54,13 +54,10 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_activity);
         this.mainActivity = this;
-
+    //    this.getApplicationContext().deleteFile("savedCalendar.txt");
         String strCalendar = this.readFromFile(this.getApplicationContext(), "savedCalendar.txt");
         boolean needToMakeCalendar = true;
         if(!strCalendar.equals("")) {
-          //  Toast.makeText(getBaseContext(), "strCalendar", Toast.LENGTH_LONG).show();
-            Toast.makeText(getBaseContext(), strCalendar, Toast.LENGTH_LONG).show();
-
             try {
                 this.calendar = this.createCalendarFromString(strCalendar);
                 needToMakeCalendar = false;
@@ -68,11 +65,8 @@ public class MainActivity extends AppCompatActivity
                 this.calendar = null;
                 needToMakeCalendar = true;
             }
+
         }
-        else {
-            Toast.makeText(getBaseContext(), "SDIgjsdgl", Toast.LENGTH_LONG).show();
-        }
-        //  Toast.makeText(getBaseContext(), strCalendar, Toast.LENGTH_LONG).show();
         if(needToMakeCalendar) {
             this.calendar = new CustomCalendar();
         }
@@ -80,10 +74,8 @@ public class MainActivity extends AppCompatActivity
         int year = c.get(Calendar.YEAR);
         int month = c.get(Calendar.MONTH);
         int day = c.get(Calendar.DAY_OF_MONTH);
-
       ////  DatePicker dp = (DatePicker) findViewById(R.id.datePicker);
        // dp.init(year, month, day, null);
-
     }
 
     private void hideAllButtons(){
@@ -141,18 +133,7 @@ public class MainActivity extends AppCompatActivity
     //  }
 
     public void onResume(){
-        super.onResume();/*
-        // here we will restore the calendar just to be safe
-        String strCalendar = this.readFromFile(this.getApplicationContext(), "savedCalendar.txt");
-        if(strCalendar != "") {
-            try {
-                this.calendar = this.createCalendarFromString(strCalendar);
-            } catch(ParseException e){
-                this.calendar = null;
-            }
-        }
-        */
-      //  Toast.makeText(getBaseContext(), strCalendar, Toast.LENGTH_LONG).show();
+        super.onResume();
     }
 
     public void onPause(){
@@ -172,19 +153,17 @@ public class MainActivity extends AppCompatActivity
 
     private CustomCalendar createCalendarFromString(String strCal) throws ParseException{
         CustomCalendar cal = new CustomCalendar();
-        String[] strEvents = strCal.split("|");
+        String[] strEvents = strCal.split("\\$");
         for(int i = 0; i < strEvents.length; i++) {
             String[] event = strEvents[i].split(",");
-
             if(event.length > 0) {
-            //    Toast.makeText(getBaseContext(), event[0], Toast.LENGTH_LONG).show();
-               /* String strDate = event[0];
+                String strDate = event[0];
                 String eventName = event[1];
                 String eventDescription = event[2];
                 String strId = event[3];
+                strId = strId.replace("$$", "");
                 Event e = new Event(strDate, eventName, eventDescription, strId);
                 cal.addEvent(e);
-                */
             }
         }
         return cal;
@@ -220,7 +199,6 @@ public class MainActivity extends AppCompatActivity
 
     private void writeCalendarToFile() {
         Context context = this.getApplicationContext();
-        //Toast.makeText(getBaseContext(), "WRITE", Toast.LENGTH_LONG).show();
         // this is where we will save the calendar to a file
         // first delete the old text file
         context.deleteFile("savedCalendar.txt");

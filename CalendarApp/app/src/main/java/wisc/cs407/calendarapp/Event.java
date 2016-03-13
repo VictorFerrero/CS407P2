@@ -9,7 +9,7 @@ import java.util.Date;
  */
 public class Event {
 
-    private static int counter = 0;
+    private static int counter = -1;
 
     private Date time;
     private String eventName;
@@ -18,6 +18,7 @@ public class Event {
     private String test;
 
     public Event(String time, String en, String eD) throws ParseException{
+        Event.counter = Event.counter + 1;
         this.test = time;
         SimpleDateFormat format = new SimpleDateFormat("MM/dd/yyyy");
         this.time = format.parse(time);
@@ -25,7 +26,6 @@ public class Event {
         this.eventDescription = eD;
         // use ids for deletion
         this.id = Event.counter;
-        Event.counter = Event.counter + 1;
     }
 
     // this constructor is for loading saved events. We use a saved id and
@@ -38,6 +38,12 @@ public class Event {
         this.eventDescription = eD;
         // use ids for deletion
         this.id = Integer.parseInt(strId);
+
+        // this constructor is used to load previously saved events. Because of this
+        // we have to make sure that the static counter will be set to the event with highest id
+        if(this.id > Event.counter) {
+            Event.counter = this.id;
+        }
     }
 
     public int getId() {

@@ -62,7 +62,7 @@ public class CustomCalendar {
             s1 += dateFormat.format(event.getTime()) + newline;
             s1 += event.getEventName() + newline;
             s1 += event.getEventDescription() + newline;
-            s1 += event.getId() + "|";
+            s1 += event.getId() + "$";
         }
         return s1;
     }
