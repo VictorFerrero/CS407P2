@@ -15,6 +15,7 @@ package wisc.cs407.calendarapp;
         import java.text.ParseException;
         import java.util.Calendar;
 
+// Toast.makeText(this.getContext(), "You cannot go back to previous question.", Toast.LENGTH_LONG).show();
  class CustomAddEventButtonListener implements View.OnClickListener {
 
      private AddEventFragment.AddEventCallback callback;
@@ -125,13 +126,6 @@ public class AddEventFragment
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
     }
-
-/*
-    public void onBackPressed() {
-       // super.onBackPressed();
-        // Toast.makeText(this.getContext(), "You cannot go back to previous question.", Toast.LENGTH_LONG).show();
-    }
-*/
 
     public void onStart() {
         super.onStart();

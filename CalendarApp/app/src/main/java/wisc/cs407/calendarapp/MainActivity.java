@@ -148,7 +148,6 @@ public class MainActivity extends AppCompatActivity
 
     public void onDestroy(){
         super.onDestroy();
-      //  getApplicationContext().deleteFile("savedCalendar.txt");
     }
 
     private CustomCalendar createCalendarFromString(String strCal) throws ParseException{

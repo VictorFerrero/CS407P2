@@ -23,6 +23,7 @@ import java.util.List;
  * Created by Victor on 3/11/2016.
  */
 
+//  Toast.makeText(this.fragmentView.getContext(), "CLICLED ON DATE PICKER", Toast.LENGTH_LONG).show();
 class CustomDeleteButtonListener implements View.OnClickListener {
 
     private Fragment theFragment;
@@ -88,7 +89,6 @@ class CustomDatePickerListener implements DatePicker.OnDateChangedListener {
 
 
     public void onDateChanged(DatePicker datePicker, int year, int monthOfYear, int dayOfMonth) {
-      //  Toast.makeText(this.fragmentView.getContext(), "CLICLED ON DATE PICKER", Toast.LENGTH_LONG).show();
         monthOfYear = monthOfYear + 1;
         String strDate = Integer.toString(monthOfYear)+ "/" + Integer.toString(dayOfMonth)  + "/" + Integer.toString(year);
         strDate = strDate.trim();
@@ -200,12 +200,6 @@ public class ViewDeleteFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
     }
 
-/*
-    public void onBackPressed() {
-       // super.onBackPressed();
-        // Toast.makeText(this.getContext(), "You cannot go back to previous question.", Toast.LENGTH_LONG).show();
-    }
-*/
 
     public void onStart() {
         super.onStart();
@@ -231,10 +225,4 @@ public class ViewDeleteFragment extends Fragment {
         super.onDestroy();
         this.mCallback = null;
     }
-
-
-
-
-
-
 }
