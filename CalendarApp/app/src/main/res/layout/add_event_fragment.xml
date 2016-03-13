@@ -6,9 +6,12 @@
 
     <DatePicker
         android:layout_width="wrap_content"
-        android:layout_height="99dp"
+        android:layout_height="200dp"
         android:id="@+id/addEventDate"
-        android:layout_gravity="center_horizontal" />
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="40dp"
+        android:datePickerMode="spinner"
+        />
 
     <TextView
         android:layout_width="wrap_content"
@@ -16,7 +19,8 @@
         android:text="Event Name"
         android:id="@+id/textView"
         android:layout_gravity="center_horizontal"
-        android:layout_weight="0.06" />
+        android:layout_weight="0.06"
+        android:layout_marginBottom="10dp"/>
 
     <EditText
         android:layout_width="match_parent"
@@ -24,19 +28,29 @@
         android:id="@+id/eventName"
         android:layout_gravity="center_horizontal"
         android:phoneNumber="false"
-        android:text="Enter the name of your event here" />
+        android:text="Enter the name of your event here"
+        android:layout_marginBottom="10dp"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Event Description"
         android:id="@+id/textView2"
-        android:layout_gravity="center_horizontal" />
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="10dp"/>
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/eventDescription"
         android:layout_gravity="center_horizontal"
-        android:text="Enter your event description here" />
+        android:text="Enter your event description here"
+        android:layout_marginBottom="10dp"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add Event"
+        android:id="@+id/addEventFragmentButton"
+        android:layout_gravity="center_horizontal" />
 </LinearLayout>
